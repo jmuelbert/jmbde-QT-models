@@ -1,3 +1,8 @@
 {
-    "python.pythonPath": "/Users/juergen/miniconda/envs/develop/bin/python"
+    "python.pythonPath": "/Users/juergen/miniconda/envs/conan/bin/python",
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pylamaEnabled": false,
+    "python.linting.enabled": true
 }

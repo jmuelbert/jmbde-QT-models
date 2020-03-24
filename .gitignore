@@ -240,3 +240,8 @@ translations/plugin_meta_data.cpp
 .vscode/.conan_tools/info.log
 ecm_uninstall.cmake
 prefix.sh
+
+# conan
+conan.lock
+conaninfo.*
+conanbuildinfo.*

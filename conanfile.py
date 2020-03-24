@@ -16,14 +16,14 @@ class JmbdemodelsConan(ConanFile):
     exports_sources = "src/*"
 
     def source(self):
-        self.run('git clone https://github.com/jmuelbert/jmbdemodels,git')
+        self.run('git clone https://github.com/jmuelbert/jmbdemodels.git')
         # This small hack might be useful to guarantee proper /MT /MD linkage
         # in MSVC if the packaged project doesn't have variables to set it
         # properly
-        tools.replace_in_file("hello/CMakeLists.txt", "PROJECT(MyHello)",
-                              '''PROJECT(MyHello)
-                                include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-                                conan_basic_setup()''')
+        # tools.replace_in_file("hello/CMakeLists.txt", "PROJECT(MyHello)",
+        #                      '''PROJECT(MyHello)
+        #                        include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+        #                        conan_basic_setup()''')
 
     def build(self):
         cmake = CMake(self)
