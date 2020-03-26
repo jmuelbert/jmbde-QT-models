@@ -56,7 +56,7 @@ jobs:
     # # FIXME: GHA will support accessing env variables here in the future
     # if: (env.splitByBuildTypes != 'true' or matrix.buildType != '') and env.recipeType == matrix.config.recipeType
     steps:
-      - uses: actions/ceckout@v2
+      - uses: actions/checkout@v2
         if: env.recipeType == matrix.config.recipeType
       - uses: actions/setup-python@v1
         with:
