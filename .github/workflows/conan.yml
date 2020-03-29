@@ -66,6 +66,7 @@ jobs:
         run: |
           pip install bincrafters_package_tools
           conan user
+          conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
           echo "::set-env name=CONAN_${{ matrix.config.compiler }}_VERSIONS::${{ matrix.config.version }}"
           echo "export CONAN_${{ matrix.config.compiler }}_VERSIONS=${{ matrix.config.version }}"
           compiler="${{ matrix.config.compiler }}"

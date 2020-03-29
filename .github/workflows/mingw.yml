@@ -20,6 +20,7 @@ jobs:
       - name: install
         run: |
             pip install bincrafters_package_tools
+            conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
       - name: run  
         env:
             CONAN_BUILD_TYPES: ${{matrix.buildType}}
