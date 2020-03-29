@@ -1,6 +1,3 @@
 #include <iostream>
-#include "hello.h"
 
-int main() {
-    hello();
-}
+int main() { std::cout << "Hello World!" << std::endl; }

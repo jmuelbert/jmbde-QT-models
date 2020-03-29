@@ -2,8 +2,8 @@ from conans import ConanFile, CMake
 
 
 class JmbdemodelsConan(ConanFile):
-    name = "JMBDEModels"
-    version = "0.2.0"
+    name = "jmbdemodels"
+    version = "0.2"
     license = "GPL-3.0-or-later"
     author = "juergen.muelbert@gmail.com"
     url = "https://github.com/jmuelbert/jmbdemodels"
@@ -14,6 +14,7 @@ class JmbdemodelsConan(ConanFile):
     default_options = {"shared": False}
     generators = "cmake"
     exports_sources = "src/*"
+    requires="qt/5.14.1@bincrafters/stable"
 
     def source(self):
         self.run('git clone https://github.com/jmuelbert/jmbdemodels.git')
