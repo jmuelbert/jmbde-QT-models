@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 ---
+=======
+>>>>>>> 3d988f1d55c516c7d234230f858b8ffc6b258f10
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -8,11 +11,19 @@ name: DevSkim
 
 on:
   push:
+<<<<<<< HEAD
     branches: [master]
   pull_request:
     branches: [master]
   schedule:
     - cron: '26 22 * * 3'
+=======
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '27 20 * * 5'
+>>>>>>> 3d988f1d55c516c7d234230f858b8ffc6b258f10
 
 jobs:
   lint:
@@ -24,11 +35,19 @@ jobs:
       security-events: write
     steps:
       - name: Checkout code
+<<<<<<< HEAD
         uses: actions/checkout@v2.4.0
 
       - name: Run DevSkim scanner
         uses: microsoft/DevSkim-Action@v1
 
+=======
+        uses: actions/checkout@v2
+
+      - name: Run DevSkim scanner
+        uses: microsoft/DevSkim-Action@v1
+        
+>>>>>>> 3d988f1d55c516c7d234230f858b8ffc6b258f10
       - name: Upload DevSkim scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v1
         with:
