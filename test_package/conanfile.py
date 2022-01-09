@@ -1,25 +1,34 @@
 import os
 
-from conans import ConanFile, CMake, tools
+from conans import ConanFile, tools
+from conan.tools.cmake import CMake
+from conan.tools.layout import cmake_layout
 
 
 class JmbdemodelsTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    generators = "cmake"
+    requires = "qt/6.2.1", "jmbdemodels/0.7"
+    # VirtualBuildEnv and VirtualRunEnv can be avoided if "tools.env.virtualenv:auto_use" is defined
+    # (it will be defined in Conan 2.0)
+    generators = "CMakeDeps", "CMakeToolchain", "VirtualBuildEnv", "VirtualRunEnv"
+    apply_env = False
+
+    options = { "enable_testing": [True, False]}
+    default_options = { "enable_testing": True}
+    
+    # def build_requirements(self):
+    #     if self.options.enable_testing:
+    #         self.tool_requires("jmbdemodels/0.7", force_host_context=True)
 
     def build(self):
         cmake = CMake(self)
-        # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is
-        # in "test_package"
         cmake.configure()
         cmake.build()
 
-    def imports(self):
-        self.copy("*.dll", dst="bin", src="bin")
-        self.copy("*.dylib*", dst="bin", src="lib")
-        self.copy('*.so*', dst='bin', src='lib')
+    def layout(self):
+        cmake_layout(self)
 
     def test(self):
-        if not tools.cross_building(self.settings):
-            os.chdir("bin")
-            self.run(".%sexample" % os.sep)
+        if not tools.cross_building(self):
+            cmd = os.path.join(self.cpp.build.bindirs[0], "example")
+            self.run(cmd, env="conanrun")

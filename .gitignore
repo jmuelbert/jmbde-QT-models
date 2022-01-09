@@ -2,8 +2,6 @@
 ## build results
 ## generated databases
 
-svenv/
-
 linuxdeployqt
 *.AppImage
 .build
@@ -29,7 +27,6 @@ appdir
 [Bb]in/
 [Ii]nstall/
 [Ll]ib/*.so*
-Makefile*
 qbs-build/
 temp*/
 [Bb]uild-*
@@ -115,8 +112,7 @@ gmon.out
 *.check_cache
 CMakeFiles/
 CMakeCache.txt
-compile_commands.json
-Makefile*
+compile_commands*.json
 Thumbs.db
 core
 moc_*.cpp
@@ -219,6 +215,7 @@ tmp/
 
 # general
 *.kdev4
+*.kate-swp
 *~
 *.rej
 *.orig
@@ -354,6 +351,7 @@ celerybeat.pid
 env/
 venv/
 ENV/
+svenv/
 env.bak/
 venv.bak/
 
@@ -390,3 +388,7 @@ conan.lock
 conaninfo.*
 conanbuildinfo.*
 conan/test_package/build
+GPATH
+GRTAGS
+GTAGS
+jmbd-QT.code-workspace
