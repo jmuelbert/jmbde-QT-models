@@ -101,7 +101,7 @@ jobs:
 
       - name: Get conan
         id: conan
-        uses: turtlebrowser/get-conan@v1.0
+        uses: turtlebrowser/get-conan@v1.1
 
       - name: Add Bincrafters Remote
         run:

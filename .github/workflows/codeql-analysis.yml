@@ -97,7 +97,7 @@ jobs:
       - name: Get conan
         if: matrix.language == 'cpp'
         id: conan
-        uses: turtlebrowser/get-conan@v1.0
+        uses: turtlebrowser/get-conan@v1.1
 
       - name: Create Build Environment
         if: matrix.language == 'cpp'
