@@ -88,7 +88,7 @@ jobs:
           key: QtCache-${{ matrix.platform }}-${{ matrix.arch }}-${{ env.QT_VERSION }}
 
       - name: Installing Qt - ${{ matrix.arch }}
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
           version: ${{  env.QT_VERSION }}
           arch: ${{ matrix.qtarch }}
