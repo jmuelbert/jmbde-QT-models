@@ -91,8 +91,18 @@ jobs:
           target: ${{ matrix.qt_target }}
           arch: ${{ matrix.config.qt_arch }}
           dir: '${{ github.workspace }}/build/'
-          # modules: 'qtscript'
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          install-deps: 'true'
+          # modules: 'qtcharts qtwebengine'
+          # archives: 'qtbase qtsvg'
+          cache: 'true'
+          cache-key-prefix: 'install-qt-action'
+          setup-python: 'true'
+          # tools: 'tools_ifw tools_qtcreator,qt.tools.qtcreator'
+          set-env: 'true'
+          tools-only: 'false'
+          aqtversion: '==3.1.*'
+          py7zrversion: '==0.20.*'
+          extra: '--external 7z'
 
       - name: Get conan
         if: matrix.language == 'cpp'
