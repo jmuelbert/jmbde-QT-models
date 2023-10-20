@@ -89,7 +89,7 @@ jobs:
           key: QtCache-${{ matrix.platform }}-{{ matrix.arch }}-${{ env.QT_VERSION }}
 
       - name: '⚙️ Install Qt'
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{ env.QT_VERSION }}
           target: ${{ env.QT_TARGET }}
@@ -293,7 +293,7 @@ jobs:
           key: QtCache-${{ matrix.platform }}-{{ matrix.arch }}-${{ env.QT_VERSION }}
 
       - name: '⚙️ Install Qt'
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{ env.QT_VERSION }}
           target: ${{ env.QT_TARGET }}
@@ -406,7 +406,7 @@ jobs:
           key: QtCache-${{ matrix.platform }}-{{ matrix.arch }}-${{ env.QT_VERSION }}
 
       - name: '⚙️ Install Qt'
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{ env.QT_VERSION }}
           target: ${{ env.QT_TARGET }}
@@ -552,7 +552,7 @@ jobs:
           key: ${{ runner.os }}-${{ env.QT_VERSION }}-${{ env.QT_TARGET }}-QtCache
 
       - name: '⚙️ Install Qt'
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{ env.QT_VERSION }}
           target: ${{ env.QT_TARGET }}
