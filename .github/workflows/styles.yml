@@ -143,7 +143,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: SQL Check
-        uses: yokawasa/action-sqlcheck@v1.4.0
+        uses: yokawasa/action-sqlcheck@v1.5.0
         id: sqlcheck
         with:
           post-comment: true
