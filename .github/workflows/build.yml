@@ -659,7 +659,7 @@ jobs:
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
       - name: '📥 Download artifacts'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
 
       - name: '🗂 Inspect directory after downloading artifacts'
         run: ls -alFR
@@ -759,7 +759,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: '📥 Download artifacts'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
       - name: '🗂 Inspect directory after downloading artifacts'
         run: ls -alFR
 
