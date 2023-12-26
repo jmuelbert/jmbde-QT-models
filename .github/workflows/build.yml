@@ -148,7 +148,7 @@ jobs:
           ls ${{runner.workspace}}
 
       - name: '📤 Upload artifact: AppImage'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{env.TARGET_NAME}}.AppImage
           path: |
@@ -203,7 +203,7 @@ jobs:
           cp $GITHUB_WORKSPACE/org.jmuelbert.jmbde-QT.flatpak ${{runner.workspace}}/org.jmuelbert.jmbde-QT_${{ steps.get_version.outputs.VERSION }}.x86_64.flatpak
 
       - name: '📤 Upload artifact: FlatPak'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.TARGET_NAME }}.flatpak
           path: |
@@ -249,7 +249,7 @@ jobs:
           ls ${{runner.workspace}}
 
       - name: '📤 Upload artifact: SnapPack'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{env.TARGET_NAME}}.snap
           path: |
@@ -349,13 +349,13 @@ jobs:
           cp ./${{env.TARGET_NAME}}.zip ${{runner.workspace}}/${{env.TARGET_NAME}}.zip
 
       - name: Upload dmg artifact for macOS - ${{ matrix.qt_version }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${env.TARGET_NAME}-dmg
           path: ${{runner.workspace}}/${{ env.TARGET_NAME }}.dmg
 
       - name: Upload zip artifact for macOS - ${{ matrix.qt_version }}-${env.BUILD_TYPE}}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.TARGET_NAME }}-macos-zip
           path: ${{runner.workspace}}/${{ env.TARGET_NAME }}*.zip
@@ -460,7 +460,7 @@ jobs:
           Compress-Archive -Path ${{ env.archiveName}}/bin -DestinationPath ${{runner.workspace}}/${{ env.archiveName}}.'zip'
 
       - name: Upload Zip archive
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.TARGET_NAME}}-win-zip
           path: ${{ runner.workspace}}/${{ env.archiveName}}.zip
@@ -474,7 +474,7 @@ jobs:
           iscc $GITHUB_WORKSPACE/packaging/win/installer_Qt6_x64.iss -DMyAppVersion=${{ steps.get_version.outputs.VERSION }} -DMyProjectRoot=${{runner.workspace}} -DMyOutRoot=$GITHUB_WORKSPACE/build//${archiveName}/bin
 
       - name: '📤 Upload artifact: ISS Installer'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         env:
           archiveName: ${{ env.TARGET_NAME}}.${{ steps.get_version.outputs.VERSION }}.Windows-${{ matrix.arch }}
         with:
@@ -512,7 +512,7 @@ jobs:
           pathTarget: ./jmbde-qt-${{ steps.get_version.outputs.VERSION }}-source-all.7z
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: source-files
           path: jmbde-qt-${{ steps.get_version.outputs.VERSION }}-source-all.7z
