@@ -83,7 +83,7 @@ jobs:
 
       - name: '⚙️ Cache Qt'
         id: cache-qt
-        uses: actions/cache@v3.3.2 # not v2!
+        uses: actions/cache@v4.0.0 # not v2!
         with:
           path: '${{ github.workspace }}/Qt'
           key: QtCache-${{ matrix.platform }}-{{ matrix.arch }}-${{ env.QT_VERSION }}
@@ -287,7 +287,7 @@ jobs:
 
       - name: '⚙️ Cache Qt'
         id: cache-qt
-        uses: actions/cache@v3.3.2 # not v2!
+        uses: actions/cache@v4.0.0 # not v2!
         with:
           path: '${{ github.workspace }}/Qt'
           key: QtCache-${{ matrix.platform }}-{{ matrix.arch }}-${{ env.QT_VERSION }}
@@ -400,7 +400,7 @@ jobs:
 
       - name: '⚙️ Cache Qt'
         id: cache-qt
-        uses: actions/cache@v3.3.2 # not v2!
+        uses: actions/cache@v4.0.0 # not v2!
         with:
           path: '${{ github.workspace }}/Qt'
           key: QtCache-${{ matrix.platform }}-{{ matrix.arch }}-${{ env.QT_VERSION }}
@@ -546,7 +546,7 @@ jobs:
 
       - name: '⚙️ Cache Qt'
         id: cache-qt
-        uses: actions/cache@v3.3.2 # not v2!
+        uses: actions/cache@v4.0.0 # not v2!
         with:
           path: '${{ github.workspace }}/Qt'
           key: ${{ runner.os }}-${{ env.QT_VERSION }}-${{ env.QT_TARGET }}-QtCache
