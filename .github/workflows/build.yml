@@ -611,7 +611,7 @@ jobs:
     steps:
       - name: Build Releasenotes
         id: github_releasenotes
-        uses: release-drafter/release-drafter@v5
+        uses: release-drafter/release-drafter@v6
         with:
           publish: "${{ steps.check-version.outputs.tag != '' }}"
           tag: '${{ steps.check-version.outputs.tag }}'
