@@ -1,23 +1,59 @@
----
-Checks:          'clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-alpha*,*,-google-*,-cppcoreguidelines-*,-readability-else-after-return,-readability-implicit-bool-cast,-llvm-include-order,-readability-named-parameter,-readabilty-namespace-comments,-llvm-namespace-comment,-clang-analyzer-alpha.core.CastToStruct,-modernize-use-override,-modernize-use-bool-literals,-clang-analyzer-cplusplus.NewDeleteLeaks,-clang-analyzer-alpha.deadcode.UnreachableCode,-modernize-use-default,-clang-analyzer-core.CallAndMessage,-modernize-pass-by-value,-clang-analyzer-core.NonNullParamChecker,-modernize-raw-string-literal,-modernize-use-using,-modernize-loop-convert,-modernize-use-emplace,-modernize-return-braced-init-list,-modernize-use-default-member-init,-modernize-use-equals-default,-fuchsia-*,-hicpp-*,-readability-implicit-bool-conversion,-llvmlibc-*'
-WarningsAsErrors: ''
-HeaderFilterRegex: ''
-AnalyzeTemporaryDtors: false
-CheckOptions:
-  - key:             cert-oop11-cpp.UseCERTSemantics
-    value:           '1'
-  - key:             modernize-loop-convert.MaxCopySize
-    value:           '16'
-  - key:             modernize-loop-convert.MinConfidence
-    value:           reasonable
-  - key:             modernize-loop-convert.NamingStyle
-    value:           CamelCase
-  - key:             modernize-pass-by-value.IncludeStyle
-    value:           llvm
-  - key:             modernize-replace-auto-ptr.IncludeStyle
-    value:           llvm
-  - key:             modernize-use-nullptr.NullMacros
-    value:           'NULL'
-  - key:             readability-braces-around-statements.ShortStatementLines
-    value:           '3'
-...
+Checks: '*, -google-*, -objc-*, -llvmlibc-*, -zircon-*,
+-altera-*,
+-hicpp-braces-around-statements,
+-hicpp-named-parameter,
+-hicpp-use-auto,
+-hicpp-avoid-c-arrays,modernize-avoid-c-arrays,
+-hicpp-no-array-decay,
+-hicpp-signed-bitwise,
+-hicpp-use-equals-default,
+-hicpp-use-emplace,
+-hicpp-special-member-functions,
+-readability-braces-around-statements,
+-readability-identifier-length,
+-readability-implicit-bool-conversion,
+-readability-named-parameter,
+-readability-qualified-auto,
+-readability-magic-numbers,
+-readability-convert-member-functions-to-static,
+-readability-function-cognitive-complexity,
+-readability-use-anyofallof,
+-readability-misleading-indentation,
+-readability-make-member-function-const,
+-modernize-use-trailing-return-type,
+-modernize-use-auto,
+-modernize-use-nodiscard,
+-modernize-return-braced-init-list,
+-modernize-macro-to-enum,
+-modernize-use-using,
+-modernize-use-emplace,
+-modernize-use-equals-default,
+-modernize-avoid-c-arrays,
+-llvm-namespace-comment,
+-llvm-qualified-auto,
+-llvm-include-order,
+-llvm-else-after-return,
+-fuchsia-*,
+-readability-inconsistent-declaration-parameter-name,
+-readability-else-after-return,
+-misc-const-correctness,
+-misc-non-private-member-variables-in-classes,
+-misc-no-recursion,
+-misc-use-anonymous-namespace,
+-cppcoreguidelines-pro-type-const-cast,
+-cppcoreguidelines-macro-usage,
+-cppcoreguidelines-owning-memory,
+-cppcoreguidelines-avoid-magic-numbers,
+-cppcoreguidelines-avoid-non-const-global-variables,
+-cppcoreguidelines-avoid-c-arrays,
+-cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+-cppcoreguidelines-pro-type-static-cast-downcast,
+-cppcoreguidelines-avoid-const-or-ref-data-members,
+-cppcoreguidelines-special-member-functions,
+-performance-unnecessary-value-param,
+-clang-analyzer-cplusplus.NewDelete,
+-clang-analyzer-cplusplus.NewDeleteLeaks,
+-cert-err58-cpp,
+-bugprone-suspicious-include,
+-bugprone-branch-clone
+'
