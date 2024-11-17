@@ -1,243 +1,330 @@
-## Ignore temporary files
-## build results
-## generated databases
+# Own ignores
 
-linuxdeployqt
-*.AppImage
-.build
-appbuild
-appdir
-/build*/
-*.tar
-*.gz
-*~swp
-# .qtmodules-travis
+# direnv
+.direnv/
 
-# Sqlite-DB
-*.db
-*.db3
-*.sqlite
-*.user.*
+# Flatpak
+.flatpak/
+.flatpak-builder/
+build-dir/
+repo/
 
-# General Build artifacts
-[Dd]ebug/
-[Rr]elease/
-[Bb]uild/
-[Oo]bj/
-[Bb]in/
-[Ii]nstall/
-[Ll]ib/*.so*
-qbs-build/
-temp*/
-[Bb]uild-*
-project.json
+# git-hooks.nix
+/.pre-commit-config.yml
 
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
+# Asciidoctor
+*.html
+
+# cspell
+.cspellcache
+
+# CMake from https://github.com/github/gitignore/blob/main/CMake.gitignore
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+CMakeUserPresets.json
+
+# Qt from https://github.com/github/gitignore/blob/main/Qt.gitignore
+# C++ objects and libs
+*.slo
+*.lo
 *.o
-*.qm
-*.moc
-moc_*.cpp
-ui_*.h
-qrc_*
-default/
-moc_predefs.h
-jmbde_autogen/
-
-# Build artifacts on Windows
-*.exe
-*.dll
-*.obj
 *.a
-*.lib
-*.exp
-*.intermediate.manifest
-
-# Build artifacts on Mac
-.qmake.stash
-translations/phony_target.app
-
-# IDE files
-*.pro.user*
-*.qbs.user*
-*.txt.user
-
-# Man
-
-# Doxygen and Sphinx
-html/
-docs/_build/html/
-docs/_build/gettext/.doctrees
-docs/build/doctrees/
-*.mo
-
-# Linux perf/debugging
-gmon.out
-
-# VS-Code
-*.db-*
-
-# This file is used to ignore files which are generated
-# ----------------------------------------------------------------------------
-
-!core/
-*.*#
-*.a
-*.app
-*.autosave
-*.bak
-*.bin
-*.core
-*.debug
-*.embed.manifest
-*.moc
-*.o
-*.obj
-*.orig
-*.out
-*.prl
-*.qm
-*.rej
-*.res
+*.la
+*.lai
 *.so
 *.so.*
-*_pch.h.cpp
-*_resource.rc
-*_wrapper.bat
-*_wrapper.sh
-*~
-.#*
-.DS_Store
+*.dll
+*.dylib
+
+# Qt-es
+object_script.*.Release
+object_script.*.Debug
+*_plugin_import.cpp
 /.qmake.cache
 /.qmake.stash
-*.check_cache
-CMakeFiles/
-CMakeCache.txt
-compile_commands*.json
-Thumbs.db
-core
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
 moc_*.cpp
+moc_*.h
 qrc_*.cpp
-tags
 ui_*.h
-wrapper.bat
-wrapper.sh
-
-# qtcreator generated file
-*.pro.user*
-*.pyqtc.user*
-*.qbs.user*
-*.qmlproject.user*
-/src/plugins/**/*.json
-/src/plugins/coreplugin/ide_version.h
-app_version.h
-phony.c
-
-# xemacs temporary files
-*.flc
-
-# Vim temporary files
-.*.swp
-
-# Visual Studio generated files
-*.ib_pdb_index
-*.idb
-*.ilk
-*.ncb
-*.opensdf
-*.pdb
-*.sdf
-*.sln
-*.suo
-*.vcproj
-*.vcxproj
-*vcproj.*.*.user
-*vcxproj.*
-
-# gcov files
-*.gcda
-*.gcno
-*.gcov
-
-# MinGW generated files
-*.Debug
-*.Release
-
-# Python byte code
-*.pyc
-
-# mypy
-.mypy_cache/
-
-# Qml caching files
+*.qmlc
 *.jsc
-*.qmlc
+Makefile*
+*build-*
+*.qm
+*.prl
 
-# Directories to ignore
-# ---------------------
+# Qt unit tests
+target_wrapper.*
 
-.moc/
-.obj/
-.pch/
-.rcc/
-.uic/
-/*-debug/
-/*-release/
-/dist/gdb/*.gz
-/dist/gdb/python/
-/dist/gdb/qtcreator-*/
-/dist/gdb/source/
-/dist/gdb/staging/
-/doc/api/html/
-/doc/html-dev/
-/doc/html/
-/doc/pluginhowto/html/
-/jmbde_doc_generated
-/lib/
-/lib64/
-/libexec/
-debug/
-ipch/
-release/
-tmp/
+# QtCreator
+*.autosave
 
-# Binaries
-# --------
-*.dll
-*.exe
-/bin/qbs*
+# QtCreator Qml
+*.qmlproject.user
+*.qmlproject.user.*
 
-# Tests
-#------
-
-# qbs builds
-/*-debug/
-/*-release/
-
-# general
-*.kdev4
-*.kate-swp
-*~
-*.rej
-*.orig
-*.out
-CMakeSettings.json
+# QtCreator CMake
 CMakeLists.txt.user*
-*.qmlc
-callgrind.out.*
-perf.data*
 
-# from kdiff3
-*.BACKUP.*
-*.BASE.*
-*.LOCAL.*
-*.REMOTE.*
+# QtCreator 4.8< compilation database
+compile_commands.json
 
-# ts generation
-translations/plugin_meta_data.cpp
-.vscode/.conan_tools/info.log
-ecm_uninstall.cmake
-prefix.sh
+# QtCreator local machine specific files for imported projects
+*creator.user*
 
+*_qmlcache.qrc
+
+# snap from https://github.com/github/gitignore/blob/main/community/Linux/Snap.gitignore
+# gitginore template for creating Snap packages
+# website: https://snapcraft.io/
+
+parts/
+prime/
+stage/
+*.snap
+
+# Snapcraft global state tracking data(automatically generated)
+# https://forum.snapcraft.io/t/location-to-save-global-state/768
+/snap/.snapcraft/
+
+# Source archive packed by `snapcraft cleanbuild` before pushing to the LXD container
+/*_source.tar.bz2
+
+# C++ from https://github.com/github/gitignore/blob/main/C%2B%2B.gitignore
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# C from https://github.com/github/gitignore/blob/main/C.gitignore
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# Node from https://github.com/github/gitignore/blob/main/Node.gitignore
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented libs generated by jscoverage/JSCover
+lib-cov
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+# Comment in the public line in if your project uses Gatsby and not Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# public
+
+# vuepress build output
+.vuepress/dist
+
+# vuepress v2.x temp and cache directory
+.temp
+.cache
+
+# Docusaurus cache and generated files
+.docusaurus
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Python from https://github.com/github/gitignore/blob/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -260,7 +347,6 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -335,7 +421,24 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#pdm.lock
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
 
 # Celery stuff
@@ -351,7 +454,6 @@ celerybeat.pid
 env/
 venv/
 ENV/
-svenv/
 env.bak/
 venv.bak/
 
@@ -379,16 +481,125 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# static files generated from Django application using `collectstatic`
-media
-static
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
 
-# conan
-conan.lock
-conaninfo.*
-conanbuildinfo.*
-conan/test_package/build
-GPATH
-GRTAGS
-GTAGS
-jmbd-QT.code-workspace
+# macOS from https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+# Linux from https://github.com/github/gitignore/blob/main/Global/Linux.gitignore
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+# Windows from https://github.com/github/gitignore/blob/main/Global/Windows.gitignore
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# VIM from https://github.com/github/gitignore/blob/main/Global/Vim.gitignore
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+# Nix from https://github.com/github/gitignore/blob/main/community/Nix.gitignore
+# Ignore build outputs from performing a nix-build or `nix build` command
+result
+result-*
