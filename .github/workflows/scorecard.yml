@@ -14,7 +14,7 @@ on: # yamllint disable-line rule:truthy
   branch_protection_rule: # Schedule the workflow to run every Tuesday at 4:24 AM
 
   schedule:
-    - cron: 34 4 * * 2
+    - cron: 44 4 * * 2
 
   push:
     branches: [main, develop, release]

@@ -2,7 +2,7 @@
 
 ## Unsere Verpflichtung
 
-Im Interesse der Förderung eines offenen und einladenden Umfeldes wollen wir uns als
+Im Interesse der Förderung eines offenen und einladenden Umfeldes wollen wir uns also
 Teilnehmer und Verantwortliche unseres Projektes verpflichten die Teilnahme an dem
 Projekt und unserer Gemeinschaft zu einer belästigungsfreien Erfahrung zu machen –
 unabhängig von Alter, Körpergröße, Behinderung, ethnischer Zuordnung, geschlechtlicher
@@ -29,13 +29,13 @@ Beispiele für nicht akzeptables Verhalten beinhalten:
 - Öffentliche oder private Belästigungen
 - Das Veröffentlichen von privaten Informationen Anderer, wie zum Beispiel physische
     oder elektronische Adressen, ohne deren ausdrückliche Erlaubnis
-- Anderes Verhalten, welches in einem professionellen Umfeld begründet als
+- Anderes Verhalten, welches in einem professionellen Umfeld begründet also
     unangemessen betrachtet werden kann
 
 ## Unsere Verantwortlichkeiten
 
 Die Projektverantwortlichen sind verantwortlich dafür, die Standards für ein akzeptables
-Benehmen klarzustellen und es wird von ihnen erwartet, dass sie als Reaktion auf
+Benehmen klarzustellen und es wird von ihnen erwartet, dass sie also Reaktion auf
 jegliches inakzeptables Verhalten passende und faire berichtigende Maßnahmen ergreifen.
 
 Die Projektverantwortlichen haben das Recht und die Verantwortung, Kommentare, Commits,
@@ -46,11 +46,11 @@ verletzend halten, zeitweilig oder dauerhaft zu sperren.
 
 ## Geltungsbereich
 
-Dieser Verhaltenskodex gilt sowohl innerhalb des Projektbereichs als auch in
+Dieser Verhaltenskodex gilt sowohl innerhalb des Projektbereichs also auch in
 öffentlichen Bereichen, wenn eine Person das Projekt oder seine Gemeinschaft
 repräsentiert. Beispiele für die Repräsentation eines Projektes oder der Gemeinschaft
 beinhalten die Verwendung einer offiziellen Projekt-E-Mail-Adresse, das Versenden von
-Nachrichten über einen öffentlichen Social-Media-Account oder das Handeln als
+Nachrichten über einen öffentlichen Social-Media-Account oder das Handeln also
 Repräsentant während einer Online- oder Offline-Veranstaltung. Der Begriff
 "Repräsentation des Projektes" kann durch die Projektverantwortlichen weiter
 ausformuliert und klargestellt werden.
@@ -58,7 +58,7 @@ ausformuliert und klargestellt werden.
 ## Umsetzung
 
 Fälle von missbräuchlichem, belästigendem oder anderweitig nicht akzeptablem Verhalten
-können dem Projektteam unter <juergen.muelbert@gmail.com> gemeldet werden. Alle
+können dem Projektteam under <juergen.muelbert@gmail.com> gemeldet werden. Alle
 Beschwerden werden geprüft und untersucht und werden zu einer Antwort führen, die
 angesichts der Umstände für notwendig und angemessen gehalten wird. Das Projektteam ist
 verpflichtet, über diejenigen, die Vorfälle gemeldet haben, Verschwiegenheit zu wahren.
@@ -73,4 +73,4 @@ bestimmt wurden.
 ## Bezug
 
 Dieser Verhaltenskodex basiert auf dem Contributor Covenant, Version 1.4, verfügbar
-unter <https://www.contributor-covenant.org/de/version/1/4/code-of-conduct.html>
+under <https://www.contributor-covenant.org/de/version/1/4/code-of-conduct.html>

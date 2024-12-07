@@ -16,7 +16,7 @@ on: # yamllint disable-line rule:truthy
       - edited
 
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "10 0 * * *"
 
 permissions:
   issues: write

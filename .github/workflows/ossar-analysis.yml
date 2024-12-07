@@ -16,7 +16,7 @@ name: OSSAR
 
 on:
   push:
-    branches: [main, develop, release, improve_build-workflow]
+    branches: [main, develop, release]
     paths:
       - "**.{cpp,h,hpp,qml,ts,py}"
       - cmake/**

@@ -44,7 +44,7 @@
 -   New Project structure
 -   New GUI
 
-## Version 0.3.4 (03 Februar 2014)
+## Version 0.3.4 (03 February 2014)
 
 -   New Database structure
 -   Improve GUI

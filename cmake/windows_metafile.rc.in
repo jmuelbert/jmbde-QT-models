@@ -1,12 +1,31 @@
-#include "winver.h"
+#include "winver.h"  // Include the version header for versioning information
 
-IDI_ICON1 ICON DISCARDABLE "@ICON_FILE@"
+// Define the application icon
+IDI_ICON1 ICON DISCARDABLE "@ICON_FILE@"  // Resource identifier for the application icon
 
-    VS_VERSION_INFO VERSIONINFO FILEVERSION @PROJECT_VERSION_MAJOR @,
-    @PROJECT_VERSION_MINOR @, @PROJECT_VERSION_PATCH @, @PROJECT_VERSION_TWEAK @PRODUCTVERSION @PROJECT_VERSION_MAJOR @, @PROJECT_VERSION_MINOR @,
-    @PROJECT_VERSION_PATCH @,
-    @PROJECT_VERSION_TWEAK @FILEFLAGS 0x0L FILEFLAGSMASK 0x3fL FILEOS 0x00040004L FILETYPE 0x1L FILESUBTYPE 0x0L BEGIN BLOCK
-    "StringFileInfo" BEGIN BLOCK "000004b0" BEGIN VALUE "CompanyName",
-    "@COMPANY@" VALUE "FileDescription", "@PROJECT_NAME@" VALUE "FileVersion", "@PROJECT_VERSION@" VALUE "LegalCopyright", "@COPYRIGHT@" VALUE "InternalName",
-    "@PROJECT_NAME@" VALUE "OriginalFilename", "@PROJECT_NAME@.exe" VALUE "ProductName", "@PROJECT_NAME@" VALUE "ProductVersion",
-    "@PROJECT_VERSION@" END END END
+// Version information block
+VS_VERSION_INFO VERSIONINFO
+    FILEVERSION @PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@, @PROJECT_VERSION_TWEAK@  // File version
+    PRODUCTVERSION @PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@, @PROJECT_VERSION_TWEAK@  // Product version
+    FILEFLAGS 0x0L  // File flags (default)
+    FILEFLAGSMASK 0x3fL  // Mask for file flags
+    FILEOS 0x00040004L  // Operating system (Windows 4.0)
+    FILETYPE 0x1L  // File type (application)
+    FILESUBTYPE 0x0L  // File subtype (none)
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"  // Language and code page (English - United States)
+        BEGIN
+            VALUE "CompanyName", "@COMPANY@"  // Company name
+            VALUE "FileDescription", "@PROJECT_NAME@"  // Description of the file
+            VALUE "FileVersion", "@PROJECT_VERSION@"  // Version of the file
+            VALUE "LegalCopyright", "@COPYRIGHT@"  // Copyright information
+            VALUE "InternalName", "@PROJECT_NAME@"  // Internal name of the file
+            VALUE "OriginalFilename", "@PROJECT_NAME@.exe"  // Original filename
+            VALUE "ProductName", "@PROJECT_NAME@"  // Product name
+            VALUE "ProductVersion", "@PROJECT_VERSION@"  // Product version
+        END
+        END
+    END
+END

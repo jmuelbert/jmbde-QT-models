@@ -16,6 +16,11 @@ rules:
     required: only-when-needed
     extra-allowed: ['{|}']
     level: warning
+  braces:
+    max-spaces-inside: 1
+  new-lines:
+    level: warning
+    type: unix
   key-duplicates: {}
   octal-values:
     forbid-implicit-octal: true

@@ -9,11 +9,11 @@ besser und besser. :smile:
 
 -   Wenn Ihnen jmbde-QT gefällt, starten Sie dieses Projekt und teilen Sie es mit Ihren
     Freunden.
--   Melden Sie Fehler oder fordern Sie neue Funktionen an unter
+-   Melden Sie Fehler oder fordern Sie neue Funktionen an under
     [opening issues](https://github.com/jmuelbert/jmbde-QT/issues/new/choose). Bitte
     folgen Sie den Problemvorlagen und stellen Sie detaillierte Informationen zur
     Verfügung, dies wird den Entwicklern helfen, den Grund des Fehlers zu finden und zu
-    verstehen, welche Funktion Sie genau anfordern.
+    verstehen, welche Function Sie genau anfordern.
 -   Helfen Sie anderen Personen bei Problemen/Anfragen in anderen Plattformen, wenn Sie
     in der Lage sind, ihnen zu helfen.
 -   Schreiben Sie Tutorials und Blogs über die Verwendung von jmbde-QT.
@@ -23,7 +23,7 @@ besser und besser. :smile:
 
 ## Ihr erster Beitrag
 
-**Arbeiten Sie an Ihrer ersten Pull-Anfrage?** Sie können von dieser _freien_ Serie
+**Arbeiten Sie an Ihrer ersten Pull-Anfrage?** Sie können von dieser _freien_ Series
 [Wie man zu einem Open-Source-Projekt auf GitHub beiträgt](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 lernen. Im Grunde genommen müssen Sie dieses Repository abspalten, Codes auf Ihre
 Abspaltung schreiben, eine Pull-Anfrage öffnen, wenn Sie fertig sind, auf Überprüfungen
@@ -37,7 +37,7 @@ ist, die Klassendefinitionen in die `.h`/`.hpp`-Dateien und die Implementierung 
 Funktionen in die `.cpp`-Dateien zu packen. Der Quellcode von jmbde-QT ist ein gutes
 Beispiel. In einer Suchmaschine nachzuschauen ist für das, was Sie implementieren
 wollen, ist normalerweise hilfreich. Kopieren und modifizieren Sie den Quellcode, wenn
-Sie etwas Ähnliches wie eine bestehende Funktion implementieren wollen. Wenn Sie nach
+Sie etwas Ähnliches wie eine bestehende Function implementieren wollen. Wenn Sie nach
 einer IDE zum Entwickeln suchen, ist [VS Code](https://code.visualstudio.com/)
 wahrscheinlich eine gute Wahl.
 
@@ -60,17 +60,17 @@ finden, das Sie interessiert. Die
 [guten Erstausgaben](https://github.com/jmuelbert/jmbde-QT/issues?q=is%3Aissue+is%3Aopen+Label%3A%22gute+Erste+Erste+Ausgabe%22)
 könnte für Sie geeignet sein.
 
-## Vor dem Schreiben von Codes
+## For dem Schreiben von Codes
 
-Bitte öffnen Sie ein Problem (beschreiben Sie das Merkmal/den Fehler wie normale
-Probleme und sagen Sie, dass Sie daran arbeiten werden, wahrscheinlich mit einem
+Bitte öffnen Sie ein Problem (beschreiben Sie das Merkmal/den Fehler wie normal
+Problem und sagen Sie, dass Sie daran arbeiten werden, wahrscheinlich mit einem
 Entwurf, wie Sie es implementieren möchten), bevor Sie Codes für eine Pull-Anfrage
 schreiben, aus diesen Gründen:
 
 1. Sie können Hilfe von anderen erhalten.
 2. Andere können wissen, dass Sie daran arbeiten, dies erspart Ihnen mögliche
    Doppelarbeiten.
-3. Sie werden benachrichtigt, wenn diese Funktion nicht akzeptiert wird, oder wenn der
+3. Sie werden benachrichtigt, wenn diese Function nicht akzeptiert wird, oder wenn der
    "Fehler" tatsächlich kein Fehler ist usw., was Ihnen Zeit spart.
 
 ## Regeln für Beiträge
@@ -97,7 +97,7 @@ schreiben, aus diesen Gründen:
     einstellen, z.B. kann die Standardversion von clang-format im VS-Code clang-format-6
     sein) und `.clang-format` im Wurzelverzeichnis, um Ihre Codes zu formatieren.
 -   Entfernen Sie keine Features, es sei denn, es ist notwendig. Fügen Sie stattdessen
-    eine Option zur Deaktivierung einer Funktion hinzu.
+    eine Option zur Deaktivierung einer Function hinzu.
 -   Halten Sie die Einstellungsdatei die ganze Zeit abwärtskompatibel.
 -   Windows, Linux und Mac OS sollten unterstützt werden.
 -   Beide hell/dunkel Systemthemen sollten unterstützt werden.

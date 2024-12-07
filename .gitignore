@@ -8,6 +8,7 @@
 .flatpak-builder/
 build-dir/
 repo/
+*.user
 
 # git-hooks.nix
 /.pre-commit-config.yml

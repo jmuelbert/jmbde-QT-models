@@ -26,7 +26,7 @@ updates:
     commit-message:
       prefix: "fix(docker)"
 
-  - package-ecosystem: "bundler" # See documentaton for possible values
+  - package-ecosystem: "bundler" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "monthly"

@@ -142,7 +142,7 @@ CREATE TABLE employee (
     mobile_id INTEGER,
     fax_id INTEGER,
     employee_account_id INTEGER,
-    employee_document_id INTGER,
+    employee_document_id INTEGER,
     chip_card_id INTEGER,
     last_update TIMESTAMP
 );

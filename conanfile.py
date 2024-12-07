@@ -3,7 +3,6 @@ from conan.tools.cmake import CMakeToolchain, CMakeDeps, CMake
 from conan.tools.layout import cmake_layout
 
 
-
 class JmbdeModelsConan(ConanFile):
     name = "jmbdemodels"
     version = "0.7"
@@ -57,7 +56,7 @@ class JmbdeModelsConan(ConanFile):
         self.options["qt"].qtsvg = True
         # self.options["qt"].qtdeclarative = True
         self.options["qt"].qttools = True
-    
+
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
@@ -65,7 +64,7 @@ class JmbdeModelsConan(ConanFile):
     def layout(self):
         cmake_layout(self)
 
-    def generate(self):        
+    def generate(self):
         tc = CMakeToolchain(self)
         # This writes the "conan_toolchain.cmake"
         tc.generate()
@@ -73,7 +72,6 @@ class JmbdeModelsConan(ConanFile):
         deps = CMakeDeps(self)
         # This write all the config files (xxx-config.cmake)
         deps.generate()
-
 
     def build(self):
         cmake = CMake(self)

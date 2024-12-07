@@ -33,9 +33,9 @@
 - [ ] If there are changes of the text displayed in the UI, they are wrapped in `tr()`
         or `QCoreApplication::translate()`.
 - [ ] If needed, I have opened a pull request or an issue to update the
-        [documentation](http://jmuelbert.github.io/jmbde-QT/).
+        [documentation](http://jmuelbert.github.io/jmbde-QT-models/).
 - [ ] If these changes are notable, they are documented in
-        [CHANGELOG.md](https://github.com/jmuelbert/jmbde-QT/blob/master/CHANGELOG.md).
+        [CHANGELOG.md](https://github.com/jmuelbert/jmbde-QT-models/blob/master/CHANGELOG.md).
 
 ## Additional text
 

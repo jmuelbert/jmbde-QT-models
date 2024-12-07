@@ -8,7 +8,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 jmbde ist ein Programm für das Management von Ressourcen in Unternehmen. Mit diesem
 Programm können die Mitarbeiter und die Ausrüstung, die sie für ihre Arbeit benötigen
-erfasst werden. Das sind unter anderem Computer, Drucker und Telefone.
+erfasst werden. Das sind under anderem Computer, Drucker und Telefone.
 
 ---
 [![Build](https://github.com/jmuelbert/jmbde-QT/actions/workflows/build.yml/badge.svg)](https://github.com/jmuelbert/jmbde-QT/actions/workflows/build.yml)
@@ -34,10 +34,10 @@ Betriebssystemen funktioniert.
 ## Setup
 
 Das Programm verwendet die [QT-Bibliothek](https://www.qt.io). Daher kann es auf fast
-jeder Plattform verwendet werden . Es läuft unter MacOS, Linux und Windows.
-Grundsätzlich sollte ein Installer für die Installation des Programms auf einem Computer
+jeder Platform verwendet werden . Es läuft under MacOS, Linux und Windows.
+Grundsätzlich sollte ein Installer für die Installation des Programs auf einem Computer
 verwendet werden. Dieses Installationsprogramm wird auf die benötigten QT-Bibliotheken
-mit installieren. Für die Nutzung des Programms bei Windows als Betriebssystem ist dies
+mit installieren. Für die Nutzung des Programs bei Windows also Betriebssystem ist dies
 zwingend notwendig. Bei Linux und macOS kann auf eine andere Variante verwendet werden.
 Bei diesen beiden Betriebssystemen kann QT zentral installiert werden. Bei diesen beiden
 Betriebssystemen werden dann nur noch die eigentlichen Programmdateien installiert. Aber
@@ -55,7 +55,7 @@ Verfügung gestellt:
 ## Ausführen
 
 Im Folgenden finden Sie einige hilfreiche Hinweise, wie Sie jmbde auf Ihrer nativen
-Plattform ausführen können.
+Platform ausführen können.
 
 ### Unix
 
@@ -121,7 +121,7 @@ den notwendigen Maßnahmen. Bibliotheken, Kompilierungs-Flags, etc.
   brew link qt5 --force
 ```
 
-- Alternativ können Sie auch
+- Alternative können Sie auch
     [Qt hier herunterladen](https://www.qt.io/download-qt-installer)
 
 Führen Sie `cmake` aus, um jmbde zu erstellen:
@@ -145,7 +145,7 @@ Führen Sie `cmake` aus, um jmbde zu erstellen:
         cmake --build .
 ```
 
-### Unter Windows
+### Under Windows
 
 - Visual Studio 2017 oder höher
 - Sie können [Qt hier herunterladen](https://www.qt.io/download-qt-installer)
@@ -176,7 +176,7 @@ Führen Sie `cmake` aus, um jmbde zu erstellen:
         ctest -C Debug -VV
 ```
 
-### Unter Linux
+### Under Linux
 
 - Auf Ubuntu/Debian:
     `sudo apt install qt5-default qttools5-dev-tools zlib1g-dev qtdeclarative5-dev cmake ninja`.
@@ -186,7 +186,7 @@ Führen Sie `cmake` aus, um jmbde zu erstellen:
 Die installierten Toolchains müssen mit derjenigen übereinstimmen, mit der Qt kompiliert
 wurde.
 
-- Als nächstes kompilieren Sie durch Ausführen:
+- Also nächstes kompilieren Sie durch Ausführen:
 
 #### Für die Release-Version
 
@@ -225,7 +225,7 @@ PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with this
 program. If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 
-Qt ist unter mehreren [Lizenzen](https://www.qt.io/licensing/) verfügbar.
+Qt ist under mehreren [Lizenzen](https://www.qt.io/licensing/) verfügbar.
 
 GPL V3 © [Jürgen Mülbert](https:/github.com/jmuelbert/jmbde-QT)
 

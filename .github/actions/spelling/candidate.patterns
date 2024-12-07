@@ -580,7 +580,7 @@ systemd.*?running in system mode \([-+].*\)$
 \b[LN]'+[a-z]{2,}\b
 
 # latex (check-spelling <= 0.0.21)
-\\(?:n(?:ew|ormal|osub)|r(?:enew)|t(?:able(?:of|)|he|itle))(?=[a-z]+)
+\\(?:n(?:ew|ormal|osub)|r(?:new)|t(?:able(?:of|)|he|itle))(?=[a-z]+)
 
 # latex (check-spelling >= 0.0.22)
 \\\w{2,}\{

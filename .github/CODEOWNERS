@@ -27,11 +27,7 @@
 
 # The lua-interface team is also reviewing everything below the mudlet-lua
 # folder and some pre-installed packages
-/src/app                        @jmuelbert
-/src/appquick                   @jmuelbert
-/src/libs/models                @jmuelbert
-/src/libs/quick                 @jmuelbert
-/src/libs/widgets               @jmuelbert
+/src/                           @jmuelbert
 
 CMakeLists.txt                  @jmuelbert
 /cmake/                         @jmuelbert

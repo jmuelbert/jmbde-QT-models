@@ -1,0 +1,763 @@
+{
+  "buildPresets": [
+    {
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "default",
+      "name": "default",
+      "targets": ["all"]
+    },
+    {
+      "configurePreset": "coverage-clang",
+      "name": "coverage-clang",
+      "targets": ["all"]
+    },
+    {
+      "configurePreset": "coverage-clang",
+      "name": "coverage-clang-cobertura-report",
+      "targets": ["cyrillic-encoder_generate-cobertura-clang-coverage"]
+    },
+    {
+      "configurePreset": "coverage-clang",
+      "name": "coverage-clang-html-report",
+      "targets": ["cyrillic-encoder_generate-html-clang-coverage"]
+    },
+    {
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "ci",
+      "name": "ci",
+      "targets": ["all", "all_verify_interface_header_sets"]
+    },
+    {
+      "configurePreset": "ci-clang",
+      "inherits": "ci",
+      "name": "ci-clang"
+    },
+    {
+      "configurePreset": "flatpak",
+      "inherits": "default",
+      "name": "flatpak"
+    },
+    {
+      "configurePreset": "ci-gcc",
+      "inherits": "ci",
+      "name": "ci-gcc"
+    },
+    {
+      "configurePreset": "mac-clang",
+      "name": "mac-clang",
+      "targets": ["all"]
+    },
+    {
+      "configurePreset": "mac-gcc",
+      "name": "mac-gcc",
+      "targets": ["all"]
+    },
+    {
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "configurePreset": "ci-msvc",
+      "inherits": "ci",
+      "name": "ci-msvc"
+    },
+    {
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "configurePreset": "ci-msvc-clang",
+      "inherits": "ci",
+      "name": "ci-msvc-clang"
+    },
+    {
+      "configurePreset": "clang",
+      "inherits": "default",
+      "name": "clang"
+    },
+    {
+      "configurePreset": "gcc",
+      "inherits": "default",
+      "name": "gcc"
+    },
+    {
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "configurePreset": "msvc",
+      "inherits": "default",
+      "name": "msvc"
+    },
+    {
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "configurePreset": "msvc-clang",
+      "inherits": "default",
+      "name": "msvc-clang"
+    },
+    {
+      "configurePreset": "dev",
+      "inherits": "default",
+      "name": "dev"
+    },
+    {
+      "configurePreset": "dev-clang",
+      "inherits": "dev",
+      "name": "dev-clang"
+    },
+    {
+      "configurePreset": "dev-gcc",
+      "inherits": "dev",
+      "name": "dev-gcc"
+    },
+    {
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "minimal",
+      "name": "minimal",
+      "targets": ["cyrillic-encoder"]
+    }
+  ],
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "type": "STRING",
+          "value": "RelWithDebInfo"
+        }
+      },
+      "generator": "Ninja",
+      "name": "default"
+    },
+    {
+      "hidden": true,
+      "name": "lint"
+    },
+    {
+      "binaryDir": "build-clang",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_C_COMPILER": "clang"
+      },
+      "inherits": ["default"],
+      "name": "clang"
+    },
+    {
+      "binaryDir": "build-gcc",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_C_COMPILER": "gcc"
+      },
+      "inherits": ["default"],
+      "name": "gcc"
+    },
+    {
+      "binaryDir": "build-mac-clang",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "/usr/bin/clang++",
+        "CMAKE_C_COMPILER": "/usr/bin/clang",
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      },
+      "displayName": "macOS Clang",
+      "inherits": ["default"],
+      "name": "mac-clang",
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin",
+        "type": "equals"
+      }
+    },
+    {
+      "binaryDir": "build-mac-gcc",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "/usr/local/bin/g++",
+        "CMAKE_C_COMPILER": "/usr/local/bin/gcc",
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      },
+      "displayName": "macOS GCC",
+      "inherits": ["default"],
+      "name": "mac-gcc",
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin",
+        "type": "equals"
+      }
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_VERIFY_INTERFACE_HEADER_SETS": true
+      },
+      "displayName": "Continuous Integration",
+      "inherits": ["default", "lint", "mold"],
+      "name": "ci"
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_LINKER_TYPE": "MOLD"
+      },
+      "hidden": true,
+      "name": "mold"
+    },
+    {
+      "displayName": "Continuous Integration - Clang",
+      "inherits": ["ci", "clang"],
+      "name": "ci-clang"
+    },
+    {
+      "displayName": "Continuous Integration - GCC",
+      "inherits": ["ci", "gcc"],
+      "name": "ci-gcc"
+    },
+    {
+      "displayName": "Continuous Integration - MSVC cl",
+      "inherits": ["ci", "msvc"],
+      "name": "ci-msvc"
+    },
+    {
+      "displayName": "Continuous Integration - MSVC Clang cl",
+      "inherits": ["ci", "msvc-clang"],
+      "name": "ci-msvc-clang"
+    },
+    {
+      "binaryDir": "build-coverage-clang",
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "-fcoverage-mapping -fprofile-instr-generate",
+        "CMAKE_C_FLAGS": "-fcoverage-mapping -fprofile-instr-generate",
+        "CMAKE_EXE_LINKER_FLAGS": "-fprofile-instr-generate",
+        "CMAKE_MODULE_LINKER_FLAGS": "-fprofile-instr-generate",
+        "CMAKE_SHARED_LINKER_FLAGS": "-fprofile-instr-generate",
+        "CYRILLIC_ENCODER_ENABLE_COVERAGE_CLANG": true
+      },
+      "displayName": "Coverage - Clang",
+      "environment": {
+        "LLVM_PROFILE_FILE": "profiling/test.%p.profraw"
+      },
+      "inherits": ["ci", "clang"],
+      "name": "coverage-clang"
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_INTERPROCEDURAL_OPTIMIZATION": false
+      },
+      "displayName": "Developer",
+      "inherits": ["default", "lint", "mold"],
+      "name": "dev"
+    },
+    {
+      "displayName": "Developer - Clang",
+      "inherits": ["dev", "clang"],
+      "name": "dev-clang"
+    },
+    {
+      "displayName": "Developer - GCC",
+      "inherits": ["dev", "gcc"],
+      "name": "dev-gcc"
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_COMPILE_WARNING_AS_ERROR": true,
+        "CYRILLIC_ENCODER_ENABLE_SPLIT_DWARF": false,
+        "CYRILLIC_ENCODER_ENABLE_TESTING": true
+      },
+      "displayName": "Flatpak",
+      "inherits": ["minimal"],
+      "name": "flatpak"
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_COMPILE_WARNING_AS_ERROR": false,
+        "CYRILLIC_ENCODER_ENABLE_CLANG_TIDY": false,
+        "CYRILLIC_ENCODER_ENABLE_IWYU": false,
+        "CYRILLIC_ENCODER_ENABLE_SPLIT_DWARF": false,
+        "CYRILLIC_ENCODER_ENABLE_TESTING": false
+      },
+      "displayName": "Minimal",
+      "inherits": ["default"],
+      "name": "minimal"
+    },
+    {
+      "architecture": {
+        "strategy": "external",
+        "value": "x64"
+      },
+      "binaryDir": "build-msvc",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "cl.exe",
+        "CMAKE_C_COMPILER": "cl.exe"
+      },
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "displayName": "Visual Studio cl Toolchain",
+      "inherits": ["default"],
+      "name": "msvc",
+      "toolset": {
+        "strategy": "external",
+        "value": "host=x64"
+      }
+    },
+    {
+      "architecture": {
+        "strategy": "external",
+        "value": "x64"
+      },
+      "binaryDir": "build-msvc-clang",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang-cl.exe",
+        "CMAKE_C_COMPILER": "clang-cl.exe"
+      },
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "displayName": "Visual Studio clang-cl Toolchain",
+      "inherits": ["default"],
+      "name": "msvc-clang",
+      "toolset": {
+        "strategy": "external",
+        "value": "ClangCL,host=x64"
+      }
+    }
+  ],
+  "packagePresets": [],
+  "testPresets": [
+    {
+      "configuration": "RelWithDebInfo",
+      "configurePreset": "default",
+      "name": "default",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "configurePreset": "ci",
+      "inherits": "default",
+      "name": "ci"
+    },
+    {
+      "configurePreset": "flatpak",
+      "inherits": "default",
+      "name": "flatpak"
+    },
+    {
+      "configurePreset": "ci-clang",
+      "inherits": "ci",
+      "name": "ci-clang"
+    },
+    {
+      "configurePreset": "ci-gcc",
+      "inherits": "ci",
+      "name": "ci-gcc"
+    },
+    {
+      "configurePreset": "mac-clang",
+      "name": "mac-clang",
+      "inherits": "default",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "configurePreset": "mac-gcc",
+      "name": "mac-gcc",
+      "inherits": "default",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "configurePreset": "ci-msvc",
+      "inherits": "ci",
+      "name": "ci-msvc"
+    },
+    {
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "configurePreset": "ci-msvc-clang",
+      "inherits": "ci",
+      "name": "ci-msvc-clang"
+    },
+    {
+      "configurePreset": "clang",
+      "inherits": "default",
+      "name": "clang"
+    },
+    {
+      "configurePreset": "coverage-clang",
+      "inherits": "default",
+      "name": "coverage-clang"
+    },
+    {
+      "configurePreset": "gcc",
+      "inherits": "default",
+      "name": "gcc"
+    },
+    {
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "configurePreset": "msvc",
+      "inherits": "default",
+      "name": "msvc"
+    },
+    {
+      "condition": {
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows",
+        "type": "equals"
+      },
+      "configurePreset": "msvc-clang",
+      "inherits": "default",
+      "name": "msvc-clang"
+    },
+    {
+      "configurePreset": "dev",
+      "inherits": "default",
+      "name": "dev"
+    },
+    {
+      "configurePreset": "dev-clang",
+      "inherits": "dev",
+      "name": "dev-clang"
+    },
+    {
+      "configurePreset": "dev-gcc",
+      "inherits": "dev",
+      "name": "dev-gcc"
+    }
+  ],
+  "version": 8,
+  "workflowPresets": [
+    {
+      "name": "ci",
+      "steps": [
+        {
+          "name": "ci",
+          "type": "configure"
+        },
+        {
+          "name": "ci",
+          "type": "build"
+        },
+        {
+          "name": "ci",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "coverage-clang",
+      "steps": [
+        {
+          "name": "coverage-clang",
+          "type": "configure"
+        },
+        {
+          "name": "coverage-clang",
+          "type": "build"
+        },
+        {
+          "name": "coverage-clang",
+          "type": "test"
+        },
+        {
+          "name": "coverage-clang-cobertura-report",
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "name": "ci-clang",
+      "steps": [
+        {
+          "name": "ci-clang",
+          "type": "configure"
+        },
+        {
+          "name": "ci-clang",
+          "type": "build"
+        },
+        {
+          "name": "ci-clang",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "ci-gcc",
+      "steps": [
+        {
+          "name": "ci-gcc",
+          "type": "configure"
+        },
+        {
+          "name": "ci-gcc",
+          "type": "build"
+        },
+        {
+          "name": "ci-gcc",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "mac-clang",
+      "steps": [
+        {
+          "name": "mac-clang",
+          "type": "configure"
+        },
+        {
+          "name": "mac-clang",
+          "type": "build"
+        },
+        {
+          "name": "mac-clang",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "mac-gcc",
+      "steps": [
+        {
+          "name": "mac-gcc",
+          "type": "configure"
+        },
+        {
+          "name": "mac-gcc",
+          "type": "build"
+        },
+        {
+          "name": "mac-gcc",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "ci-msvc",
+      "steps": [
+        {
+          "name": "ci-msvc",
+          "type": "configure"
+        },
+        {
+          "name": "ci-msvc",
+          "type": "build"
+        },
+        {
+          "name": "ci-msvc",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "ci-msvc-clang",
+      "steps": [
+        {
+          "name": "ci-msvc-clang",
+          "type": "configure"
+        },
+        {
+          "name": "ci-msvc-clang",
+          "type": "build"
+        },
+        {
+          "name": "ci-msvc-clang",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "default",
+      "steps": [
+        {
+          "name": "default",
+          "type": "configure"
+        },
+        {
+          "name": "default",
+          "type": "build"
+        },
+        {
+          "name": "default",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "clang",
+      "steps": [
+        {
+          "name": "clang",
+          "type": "configure"
+        },
+        {
+          "name": "clang",
+          "type": "build"
+        },
+        {
+          "name": "clang",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "gcc",
+      "steps": [
+        {
+          "name": "gcc",
+          "type": "configure"
+        },
+        {
+          "name": "gcc",
+          "type": "build"
+        },
+        {
+          "name": "gcc",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "msvc",
+      "steps": [
+        {
+          "name": "msvc",
+          "type": "configure"
+        },
+        {
+          "name": "msvc",
+          "type": "build"
+        },
+        {
+          "name": "msvc",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "msvc-clang",
+      "steps": [
+        {
+          "name": "msvc-clang",
+          "type": "configure"
+        },
+        {
+          "name": "msvc-clang",
+          "type": "build"
+        },
+        {
+          "name": "msvc-clang",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "dev",
+      "steps": [
+        {
+          "name": "dev",
+          "type": "configure"
+        },
+        {
+          "name": "dev",
+          "type": "build"
+        },
+        {
+          "name": "dev",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "dev-clang",
+      "steps": [
+        {
+          "name": "dev-clang",
+          "type": "configure"
+        },
+        {
+          "name": "dev-clang",
+          "type": "build"
+        },
+        {
+          "name": "dev-clang",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "flatpak",
+      "steps": [
+        {
+          "name": "flatpak",
+          "type": "configure"
+        },
+        {
+          "name": "flatpak",
+          "type": "build"
+        },
+        {
+          "name": "flatpak",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "dev-gcc",
+      "steps": [
+        {
+          "name": "dev-gcc",
+          "type": "configure"
+        },
+        {
+          "name": "dev-gcc",
+          "type": "build"
+        },
+        {
+          "name": "dev-gcc",
+          "type": "test"
+        }
+      ]
+    },
+    {
+      "name": "minimal",
+      "steps": [
+        {
+          "name": "minimal",
+          "type": "configure"
+        },
+        {
+          "name": "minimal",
+          "type": "build"
+        }
+      ]
+    }
+  ]
+}

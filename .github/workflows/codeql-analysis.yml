@@ -1,7 +1,7 @@
 ---
 # SPDX-FileCopyrightText: © 2016-2024 Jürgen Mülbert
 #
-# SPDX-License-Identifier: MIT 
+# SPDX-License-Identifier: MIT
 #
 
 # For most projects, this workflow file will not need changing; you simply need
@@ -23,7 +23,7 @@ on: # yamllint disable-line rule:truthy
     paths:
       - "**.{cpp,h,hpp,py,ts,qml}"
       - cmake/**
-      - apps/**
+      - src/**
       - CMakeLists.txt
       - conanfile.py
       - ".github/workflows/codeql-analysis.yml"
@@ -38,10 +38,10 @@ on: # yamllint disable-line rule:truthy
       - ".github/workflows/codeql-analysis.yml"
 
   schedule:
-    - cron: "38 0 * * 5"
+    - cron: "42 0 * * 5"
 
 env:
-  TARGET_NAME: "jmbde"
+  TARGET_NAME: "jmbde-models"
   QT_INSTALL_PREFIX: ${{ github.workspace }}/install
   QT_VERSION: 6.5.3
 

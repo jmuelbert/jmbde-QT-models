@@ -14,7 +14,7 @@ body:
   - type: input
     id: jmbde-QT-version
     attributes:
-      label: What version of `jmbde-QT` are you using?
+      label: What version of `jmbde-QT-models` are you using?
       placeholder: 0.0.0
     validations:
       required: true

@@ -1,14 +1,15 @@
 {
   "recommendations": [
-    "ms-vscode.cpptools",
-    "matepek.vscode-catch2-test-adapter",
+    "charliermarsh.ruff",
+    "bilelmoussaoui.flatpak-vscode",
+    "mkhl.direnv",
+    "asciidoctor.asciidoctor-vscode",
+    "ms-vscode.cpptools-extension-pack",
     "llvm-vs-code-extensions.vscode-clangd",
-    "twxs.cmake",
     "ms-vscode.cmake-tools",
-    "christian-kohler.path-intellisense",
-    "hbenl.vscode-test-explorer",
-    "gruntfuggly.todo-tree",
-    "cschlosser.doxdocgen",
-    "tdennis4496.cmantic"
+    "cheshirekow.cmake-format",
+    "streetsidesoftware.code-spell-checker",
+    "bbenoist.nix",
+    "nefrob.vscode-just-syntax"
   ]
 }

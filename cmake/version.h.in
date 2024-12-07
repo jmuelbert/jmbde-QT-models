@@ -1,15 +1,19 @@
-#define PROJECT_NAME "@PROJECT_NAME@"
-#define PROJECT_DESCRIPTION "@PROJECT_DESCRIPTION@"
+// Project metadata definitions
+#define PROJECT_NAME "@PROJECT_NAME@"  // Name of the project
+#define PROJECT_DESCRIPTION "@PROJECT_DESCRIPTION@"  // Brief description of the project
 
-#define AUTHOR_ORGANIZATION "@AUTHOR_ORGANIZATION@"
-#define AUTHOR_DOMAIN "@AUTHOR_DOMAIN@"
-#define AUTHOR_MAINTAINER "AUTHOR_MAINTAINER@"
+// Author information
+#define AUTHOR_ORGANIZATION "@AUTHOR_ORGANIZATION@"  // Organization of the author
+#define AUTHOR_DOMAIN "@AUTHOR_DOMAIN@"  // Domain of the author
+#define AUTHOR_MAINTAINER "AUTHOR_MAINTAINER@"  // Maintainer's email address
 
-#define VERSION_MAJOR "@APPLICATION_VERSION_MAJOR@"
-#define VERSION_MINOR "@APPLICATION_VERSION_MINOR@"
-#define VERSION_PATCH "@APPLICATION_VERSION_PATCH@"
-#define VERSION_REVISION "@APPLICATION_VERSION_REVISION@"
+// Versioning information
+#define VERSION_MAJOR "@APPLICATION_VERSION_MAJOR@"  // Major version number
+#define VERSION_MINOR "@APPLICATION_VERSION_MINOR@"  // Minor version number
+#define VERSION_PATCH "@APPLICATION_VERSION_PATCH@"  // Patch version number
+#define VERSION_REVISION "@APPLICATION_VERSION_REVISION@"  // Revision number
 
-#define VERSION "@APPLICATION_VERSION@"
+#define VERSION "@APPLICATION_VERSION@"  // Full version string
 
-const char *GIT_REVISION = "@GIT_REVISION@";
+// Git revision information
+const char *GIT_REVISION = "@GIT_REVISION@";  // Current Git revision

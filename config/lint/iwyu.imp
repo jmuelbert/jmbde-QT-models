@@ -1,0 +1,9 @@
+[
+    {"symbol": ["std::begin", "private", "<iterator>", "public"] },
+    {"symbol": ["std::begin", "private", "<array>", "public"] },
+    {"symbol": ["std::end", "private", "<iterator>", "public"] },
+    {"symbol": ["std::end", "private", "<array>", "public"] },
+
+    # Microsoft GSL
+    {"include": ["@<gsl/.*>", "public", "<gsl/gsl>", "public"] }
+]
