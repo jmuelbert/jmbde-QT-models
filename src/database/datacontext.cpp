@@ -17,7 +17,7 @@
 
 Q_LOGGING_CATEGORY(dbLog, "jmbde.database")
 
-#include "jmbdemodels/database/datacontext.h"
+#include "jmbde/models/database/datacontext.h"
 
 // Anonymous namespace for internal constants and utility functions
 namespace {

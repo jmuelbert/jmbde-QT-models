@@ -18,7 +18,7 @@
 #include <QtSql>
 #include <memory>
 
-#include "datacontext.h"
+#include "jmbde/models/database/datacontext.h"
 #include "jmbdemodels_export.h"
 
 Q_DECLARE_LOGGING_CATEGORY(commonDataLog)
@@ -29,10 +29,10 @@ namespace models {
 /**
  * @brief Provides a base class for database interactions, offering utilities for model creation,
  *        CSS generation, and HTML representation of data.
- * 
- * This class abstracts common operations for database-driven applications, 
+ *
+ * This class abstracts common operations for database-driven applications,
  * enabling integration with `QAbstractTableModel` and SQL models.
- * 
+ *
  * @author Jürgen Mülbert
  * @since 0.4
  * @version 0.8

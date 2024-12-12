@@ -3,98 +3,108 @@
 # SPDX-License-Identifier: EUPL-1.2
 # ---------------------------------------------------------------------------- #
 
-# CMake includes for package configuration, dependencies, and exports
+cmake_minimum_required(VERSION 3.16...3.27)
+
+# ---------------------------------------------------------------------------- #
+# Project Configuration
+# ---------------------------------------------------------------------------- #
+set(LIB_NAME jmbdemodels)
+set(LIB_NAMESPACE JMBDEModels)
+set(LIB_VERSION_MAJOR 0)
+set(LIB_VERSION_MINOR 7)
+set(LIB_VERSION_PATCH 0)
+set(LIB_VERSION "${LIB_VERSION_MAJOR}.${LIB_VERSION_MINOR}.${LIB_VERSION_PATCH}")
+set(LIB_SOVERSION ${LIB_VERSION_MAJOR})
+
+# ---------------------------------------------------------------------------- #
+# CMake Includes
+# ---------------------------------------------------------------------------- #
 include(CMakePackageConfigHelpers)
-include(CMakeFindDependencyMacro)
 include(GenerateExportHeader)
 
 # ---------------------------------------------------------------------------- #
-# Project Metadata
+# Options
 # ---------------------------------------------------------------------------- #
-set(TARGET_ID jmbdemodels)
-string(TOLOWER ${TARGET_ID} TARGET_ID_LOWER)
-set(TARGET_NAMESPACE jmuelbert)
-set(TARGET_NAME ${TARGET_ID_LOWER})
-set(TARGET_VERSION_MAJOR 0)
-set(TARGET_VERSION_MINOR 7)
-set(TARGET_VERSION_PATCH 0)
-set(TARGET_VERSION
-    ${TARGET_VERSION_MAJOR}.${TARGET_VERSION_MINOR}.${TARGET_VERSION_PATCH})
-set(TARGET_SO_VERSION ${TARGET_VERSION_MAJOR})
-
-message(STATUS "Building ${TARGET_NAMESPACE}::${TARGET_NAME}"
-               " Version ${TARGET_VERSION} SO_Version ${TARGET_SO_VERSION}"
-               " in ${CMAKE_BUILD_TYPE} mode")
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+option(JMBDE_ENABLE_PCH "Enable precompiled headers" ON)
+option(JMBDE_BUILD_TESTS "Build test suite" ON)
+option(JMBDE_ENABLE_LTO "Enable Link Time Optimization" ON)
 
 # ---------------------------------------------------------------------------- #
-# Find Qt6
+# Qt Configuration
 # ---------------------------------------------------------------------------- #
-find_package(
-  Qt6 REQUIRED
-  COMPONENTS Core Gui Sql
-  OPTIONAL_COMPONENTS LinguistTools)
-
-# ---------------------------------------------------------------------------- #
-# Define Library Target
-# ---------------------------------------------------------------------------- #
+find_package(Qt6 6.2 REQUIRED COMPONENTS
+    Core Gui Sql OPTIONAL_COMPONENTS LinguistTools)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 qt_standard_project_setup()
 
-if(BUILD_SHARED_LIBS)
-  qt_add_library(${TARGET_NAME} SHARED MANUAL_FINALIZATION)
-else()
-  qt_add_library(${TARGET_NAME} STATIC MANUAL_FINALIZATION)
-endif()
-
-add_library(${TARGET_NAMESPACE}::${TARGET_NAME} ALIAS ${TARGET_NAME})
+# ---------------------------------------------------------------------------- #
+# Source Files
+# ---------------------------------------------------------------------------- #
+# Include source and headers files list
+include(CMakeLists_files.cmake)
 
 # ---------------------------------------------------------------------------- #
-# Source and Include Directories
+# Library Target
 # ---------------------------------------------------------------------------- #
-set(TARGET_INCLUDE_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/include)
-include(CMakeLists_files.cmake) # Define SOURCES and HEADERS
+qt_add_library(${LIB_NAME} MANUAL_FINALIZATION)
+add_library(${LIB_NAMESPACE}::${LIB_NAME} ALIAS ${LIB_NAME})
 
-target_sources(${TARGET_NAME} PRIVATE ${SOURCES} ${HEADERS})
+target_sources(${LIB_NAME}
+  PRIVATE
+    ${SOURCES}
+  PUBLIC
+    FILE_SET HEADERS
+    BASE_DIRS ${CMAKE_SOURCE_DIR}/include
+    FILES ${HEADERS}
+)
 
 # ---------------------------------------------------------------------------- #
 # Target Properties
 # ---------------------------------------------------------------------------- #
-set_target_properties(${TARGET_NAME}
-  PROPERTIES
-    VERSION ${TARGET_VERSION}
-    SOVERSION ${TARGET_SO_VERSION}
-    EXPORT_NAME ${TARGET_NAME}
-    MSVC_RUNTIME_LIBRARY "${MSVC_RUNTIME_TYPE}")
+set_target_properties(${LIB_NAME}
+    PROPERTIES
+        VERSION ${LIB_VERSION}
+        SOVERSION ${LIB_SOVERSION}
+        CXX_VISIBILITY_PRESET hidden
+        VISIBILITY_INLINES_HIDDEN ON
+        POSITION_INDEPENDENT_CODE ON
+        EXPORT_NAME ${LIB_NAME}
+        DEBUG_POSTFIX "d"
+        MSVC_RUNTIME_LIBRARY "${CMAKE_MSVC_RUNTIME_LIBRARY}"
+)
 
 # ---------------------------------------------------------------------------- #
-# Include Directories
+# Include Directories and Compile Definitions
 # ---------------------------------------------------------------------------- #
-target_include_directories(${TARGET_NAME}
+target_include_directories(${LIB_NAME}
   PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/exports>
-    $<BUILD_INTERFACE:${TARGET_INCLUDE_FOLDER}>
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/exports>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
   PRIVATE
-    ${TARGET_INCLUDE_FOLDER})
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
-
-# ---------------------------------------------------------------------------- #
-# Compile Definitions and Options
-# ---------------------------------------------------------------------------- #
-target_compile_definitions(${TARGET_NAME}
+target_compile_definitions(${LIB_NAME}
   PRIVATE
+    JMBDE_MODELS_LIBRARY
+    QT_NO_CAST_TO_ASCII
+    QT_NO_CAST_FROM_ASCII
+    QT_NO_URL_CAST_FROM_STRING
+    QT_NO_CAST_FROM_BYTEARRAY
+    QT_USE_QSTRINGBUILDER
+    QT_NO_SIGNALS_SLOTS_KEYWORDS
+    QT_USE_FAST_CONCATENATION
+    QT_USE_FAST_OPERATOR_PLUS
     $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>
-    TRANSLATION_DOMAIN="${TARGET_NAME}"
-    JMBDE_MODELS_VERSION="${TARGET_VERSION}")
-
-# ensure right translations domain, we use one kate.po(t) for lib + apps
-target_compile_definitions(${TARGET_NAME}
-                           PRIVATE TRANSLATION_DOMAIN="${TARGET_NAME}")
+    )
 
 # ---------------------------------------------------------------------------- #
 # Link Libraries
 # ---------------------------------------------------------------------------- #
-target_link_libraries(${TARGET_NAME}
+target_link_libraries(${LIB_NAME}
   PUBLIC
     Qt6::Core
     Qt6::Gui
@@ -103,60 +113,85 @@ target_link_libraries(${TARGET_NAME}
     )
 
 # ---------------------------------------------------------------------------- #
-# TODO: Find the Issue and enable
-# Precompiled Headers (Optional)
+# Precompiled Headers
 # ---------------------------------------------------------------------------- #
-# if(JMBDE_MODELS_ENABLE_PCH)
-#    target_precompile_headers(${TARGET_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include/pch.h)
-# endif()
-
-qt_finalize_target(${TARGET_NAME})
+if(JMBDE_ENABLE_PCH)
+    target_precompile_headers(${LIB_NAME}
+        PRIVATE
+            <QtCore>
+            <QtGui>
+            <QtSql>
+    )
+endif()
 
 # ---------------------------------------------------------------------------- #
 # Export Header Generation
 # ---------------------------------------------------------------------------- #
-generate_export_header(${TARGET_NAME}
-  EXPORT_FILE_NAME ${CMAKE_BINARY_DIR}/exports/${TARGET_NAME}_export.h)
+generate_export_header(${LIB_NAME}
+  BASE_NAME ${LIB_NAME}
+  EXPORT_FILE_NAME ${CMAKE_BINARY_DIR}/exports/${LIB_NAME}_export.h
+)
 
 # ---------------------------------------------------------------------------- #
-# Installation Directories
+# Installation
 # ---------------------------------------------------------------------------- #
-set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET_NAME})
-
-install(TARGETS ${TARGET_NAME}
-  EXPORT ${TARGET_NAME}Config
+install(TARGETS ${LIB_NAME}
+  EXPORT ${LIB_NAME}Targets
+  FILE_SET HEADERS
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-  INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+  INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
 
-install(DIRECTORY include/${TARGET_NAME} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
-# ---------------------------------------------------------------------------- #
-# CMake Package Configuration
-# ---------------------------------------------------------------------------- #
-write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_ID}ConfigVersion.cmake
-  VERSION ${TARGET_VERSION}
-  COMPATIBILITY AnyNewerVersion)
-
-configure_package_config_file(
-  ${CMAKE_SOURCE_DIR}/cmake/config.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_ID}Config.cmake
-  INSTALL_DESTINATION ${INSTALL_CONFIGDIR})
-
-install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_ID}Config.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_ID}ConfigVersion.cmake
-  DESTINATION ${INSTALL_CONFIGDIR})
-
-# ---------------------------------------------------------------------------- #
-# Export Build Tree Configuration
-# ---------------------------------------------------------------------------- #
-export(EXPORT ${TARGET_NAME}Config
-  FILE ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_ID}Config.cmake
-  NAMESPACE ${TARGET_NAMESPACE}::)
-
-if(__MSVC AND BUILD_SHARED_LIBS)
-  install(FILES "$<TARGET_PDB_FILE:${TARGET_NAME}>" DESTINATION ${CMAKE_INSTALL_BINDIR})
+# Install PDB files for MSVC
+if(MSVC AND BUILD_SHARED_LIBS)
+    install(FILES $<TARGET_PDB_FILE:${LIB_NAME}>
+        DESTINATION ${CMAKE_INSTALL_BINDIR}
+        OPTIONAL
+    )
 endif()
+
+# ---------------------------------------------------------------------------- #
+# Package Configuration
+# ---------------------------------------------------------------------------- #
+configure_package_config_file(
+  ${CMAKE_SOURCE_DIR}/cmake/Config.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}Config.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${LIB_NAME}
+)
+
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}ConfigVersion.cmake
+  VERSION ${LIB_VERSION}
+  COMPATIBILITY SameMajorVersion
+)
+
+install(
+  FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}Config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}ConfigVersion.cmake
+  DESTINATION
+    ${CMAKE_INSTALL_LIBDIR}/cmake/${LIB_NAME}
+)
+
+install(
+  EXPORT ${LIB_NAME}Targets
+  FILE ${LIB_NAME}Targets.cmake
+  NAMESPACE ${LIB_NAMESPACE}::
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${LIB_NAME}
+)
+
+# ---------------------------------------------------------------------------- #
+# Tests Configuration
+# ---------------------------------------------------------------------------- #
+# Add testing if enabled
+# if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR JMBDE_MODELS_ENABLE_TESTING)
+#  enable_testing()
+#  add_subdirectory(${CMAKE_SOURCE_DIR}/tests)
+# endif()
+
+# ---------------------------------------------------------------------------- #
+# Finalize Qt Setup
+# ---------------------------------------------------------------------------- #
+qt_finalize_target(${LIB_NAME})

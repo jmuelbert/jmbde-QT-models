@@ -1,3 +1,127 @@
+-- Basis-Tabellen
+CREATE TABLE city_name (
+    city_name_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE zip_code (
+    zip_code_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    code VARCHAR(10) NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE zip_city (
+    zip_city_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    zip_code_id INTEGER NOT NULL,
+    city_id INTEGER NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (zip_code_id) REFERENCES zip_code(zip_code_id) ON DELETE CASCADE,
+    FOREIGN KEY (city_id) REFERENCES city_name(city_name_id) ON DELETE CASCADE,
+    UNIQUE(zip_code_id, city_id)
+);
+
+-- Organisations-Tabellen
+CREATE TABLE company (
+    company_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(50) NOT NULL,
+    name2 VARCHAR(50),
+    street VARCHAR(50),
+    city VARCHAR(50),
+    zip_code INTEGER,
+    phone_number VARCHAR(50),
+    fax_number VARCHAR(50),
+    mobile_number VARCHAR(50),
+    mail_address VARCHAR(50),
+    active BOOLEAN DEFAULT 1,
+    employee_id INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
+);
+
+CREATE TABLE department (
+    department_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(50) NOT NULL,
+    priority INTEGER DEFAULT 0,
+    printer_id INTEGER,
+    fax_id INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (printer_id) REFERENCES printer(printer_id),
+    FOREIGN KEY (fax_id) REFERENCES fax(fax_id)
+);
+
+-- Geräte-Basistabellen
+CREATE TABLE device_type (
+    device_type_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE device_name (
+    device_name_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE manufacturer (
+    manufacturer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(50) NOT NULL,
+    name2 VARCHAR(50),
+    supporter VARCHAR(50),
+    address VARCHAR(50),
+    address2 VARCHAR(50),
+    zip_city_id INTEGER,
+    mail_address VARCHAR(50),
+    phone_number VARCHAR(50),
+    fax_number VARCHAR(50),
+    hotline_number VARCHAR(50),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (zip_city_id) REFERENCES zip_city(zip_city_id)
+);
+
+-- Computer und Software
+CREATE TABLE computer (
+    computer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    device_name_id INTEGER NOT NULL,
+    serial_number VARCHAR(20) UNIQUE,
+    service_tag VARCHAR(20),
+    service_number VARCHAR(20),
+    memory INTEGER,
+    network VARCHAR(30),
+    network_name VARCHAR(30),
+    network_ip_address VARCHAR(30),
+    active BOOLEAN DEFAULT 1,
+    replace BOOLEAN DEFAULT 0,
+    device_type_id INTEGER NOT NULL,
+    employee_id INTEGER,
+    place_id INTEGER,
+    department_id INTEGER,
+    manufacturer_id INTEGER,
+    inventory_id INTEGER,
+    processor_id INTEGER,
+    os_id INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (device_name_id) REFERENCES device_name(device_name_id),
+    FOREIGN KEY (device_type_id) REFERENCES device_type(device_type_id),
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
+    FOREIGN KEY (place_id) REFERENCES place(place_id),
+    FOREIGN KEY (department_id) REFERENCES department(department_id),
+    FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(manufacturer_id),
+    FOREIGN KEY (processor_id) REFERENCES processor(processor_id),
+    FOREIGN KEY (os_id) REFERENCES os(os_id)
+);
+
+--- TODO: Improve like above
+---
 CREATE TABLE account (
     account_id INTEGER PRIMARY KEY,
     user_name VARCHAR(50),
@@ -34,74 +158,14 @@ CREATE TABLE chip_card_profile_door (
     chip_card_door_id INTEGER,
     last_update TIMESTAMP
 );
-CREATE TABLE city_name (
-    city_name_id INTEGER PRIMARY KEY,
-    name VARCHAR(50),
-    last_update TIMESTAMP
-);
-CREATE TABLE company (
-    company_id INTEGER PRIMARY KEY,
-    name VARCHAR(50),
-    name2 VARCHAR(50),
-    street VARCHAR(50),
-    city VARCHAR(50),
-    zip_code INTEGER,
-    phone_number VARCHAR(50),
-    fax_number VARCHAR(50),
-    mobile_number VARCHAR(50),
-    mail_address VARCHAR(50),
-    active BOOLEAN,
-    employee_id INTEGER,
-    last_update TIMESTAMP
-);
-CREATE TABLE computer (
-    computer_id INTEGER PRIMARY KEY,
-    device_name_id INTEGER,
-    serial_number VARCHAR(20),
-    service_tag VARCHAR(20),
-    service_number VARCHAR(20),
-    memory INTEGER,
-    network VARCHAR(30),
-    network_name VARCHAR(30),
-    network_ip_address VARCHAR(30),
-    active BOOLEAN,
-    replace BOOLEAN,
-    device_type_id INTEGER,
-    employee_id INTEGER,
-    place_id INTEGER,
-    department_id INTEGER,
-    manufacturer_id INTEGER,
-    inventory_id INTEGER,
-    processor_id INTEGER,
-    os_id INTEGER,
-    computer_software_id INTEGER,
-    printer_id INTEGER,
-    last_update TIMESTAMP
-);
+
 CREATE TABLE computer_software (
     computer_software_id INTEGER PRIMARY KEY,
     computer_id INTEGER,
     software_id INTEGER,
     last_update TIMESTAMP
 );
-CREATE TABLE department (
-    department_id INTEGER PRIMARY KEY,
-    name (50),
-    priority INTEGER,
-    printer_id INTEGER,
-    fax_id INTEGER,
-    last_update TIMESTAMP
-);
-CREATE TABLE device_name (
-    device_name_id INTEGER PRIMARY KEY,
-    name VARCHAR(50),
-    last_update TIMESTAMP
-);
-CREATE TABLE device_type (
-    device_type_id INTEGER PRIMARY KEY,
-    name VARCHAR(50),
-    last_update TIMESTAMP
-);
+
 CREATE TABLE document (
     document_id INTEGER PRIMARY KEY,
     name VARCHAR,
@@ -181,20 +245,7 @@ CREATE TABLE inventory (
     active BOOLEAN,
     last_update TIMESTAMP
 );
-CREATE TABLE manufacturer (
-    manufacturer_id INTEGER PRIMARY KEY,
-    name VARCHAR(50),
-    name2 VARCHAR(50),
-    supporter VARCHAR(50),
-    address VARCHAR(50),
-    address2 VARCHAR(50),
-    zip_city_id INTEGER,
-    mail_address VARCHAR(50),
-    phone_number VARCHAR(50),
-    fax_number VARCHAR(50),
-    hotline_number VARCHAR(50),
-    last_update TIMESTAMP
-);
+
 CREATE TABLE mobile (
     mobile_id INTEGER PRIMARY KEY,
     device_name_id INTEGER,
@@ -292,23 +343,25 @@ CREATE TABLE title (
     from_date DATE,
     last_update TIMESTAMP
 );
-CREATE TABLE zip_city (
-    zip_city_id INTEGER PRIMARY KEY,
-    zip_code_id INTEGER,
-    city_id INTEGER,
-    last_update TIMESTAMP
-);
-CREATE TABLE zip_code (
-    zip_code_id INTEGER PRIMARY KEY,
-    code VARCHAR(10),
-    last_update TIMESTAMP
-);
+
+-- Versionssteuerung
 CREATE TABLE database_version (
-    database_version_id INTEGER PRIMARY KEY,
-    version VARCHAR(10),
-    revision VARCHAR (10),
-    patch VARCHAR(10)
+    database_version_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    version VARCHAR(10) NOT NULL,
+    revision VARCHAR(10) NOT NULL,
+    patch VARCHAR(10) NOT NULL,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
---First insertions
-INSERT INTO database_version
-VALUES(1, "0", "90", "0");
+
+-- Indices für häufig verwendete Abfragen
+CREATE INDEX idx_computer_active ON computer(active);
+CREATE INDEX idx_computer_device_name ON computer(device_name_id);
+CREATE INDEX idx_computer_employee ON computer(employee_id);
+
+-- Triggers für automatic updated_at
+CREATE TRIGGER update_computer_timestamp 
+AFTER UPDATE ON computer
+BEGIN
+    UPDATE computer SET updated_at = CURRENT_TIMESTAMP 
+    WHERE computer_id = NEW.computer_id;
+END;

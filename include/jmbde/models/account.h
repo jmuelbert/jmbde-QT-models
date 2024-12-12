@@ -19,7 +19,7 @@
 #include <QLoggingCategory>
 #include <QSqlDatabase>
 
-#include "jmbdemodels/database/datacontext.h"
+#include "jmbde/models/database/datacontext.h"
 
 namespace jmbde {
 namespace models {

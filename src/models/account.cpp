@@ -15,9 +15,9 @@
 #include <QVariant>
 #include <utility> // For std::move and std::exchange
 
-#include "jmbdemodels/models/account.h"
-#include "jmbdemodels/core/commondata.h"
-#include "jmbdemodels/database/datacontext.h"
+#include "jmbde/models/account.h"
+#include "jmbde/models/core/commondata.h"
+#include "jmbde/models/database/datacontext.h"
 
 
 
